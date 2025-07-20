@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Eye Status Detection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<!-- <body class="bg-gray-100 text-gray-800 font-sans min-h-screen flex flex-col items-center py-10"> -->
+<body class="bg-gray-800 text-gray-100 font-sans min-h-screen flex flex-col items-center py-10">
+
+    <!-- <div class="bg-white shadow-md rounded-lg p-8 w-full max-w-md"> -->
+        <div class="bg-gray-900 shadow-md rounded-lg p-8 w-full max-w-md">
+
+        <h1 class="text-2xl font-bold text-center text-blue-600 mb-6">Eye Status Detection</h1>
+
+        <form method="POST" enctype="multipart/form-data" class="space-y-6">
+            <div class="flex items-center space-x-2">
+                <input type="checkbox" name="use_camera" id="use_camera" onchange="this.form.submit()" class="h-5 w-5"
+                       {% if show_camera %}checked{% endif %}>
+                <label for="use_camera" class="text-lg font-medium">Use Camera</label>
+            </div>
+
+            <div class="space-y-2">
+                <label for="image" class="block text-sm font-medium text-gray-700">Or upload an image:</label>
+                <input type="file" name="image" accept="image/*"
+                       class="block w-full text-sm text-gray-700 border border-gray-300 rounded-md p-2">
+                <button type="submit"
+                        class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md transition duration-200">
+                    Predict
+                </button>
+            </div>
+        </form>
+
+        {% if show_camera %}
+            <div class="mt-6 text-center">
+                <h3 class="text-lg font-semibold mb-2">Live Webcam Prediction</h3>
+                <img src="{{ url_for('video_feed') }}" class="mx-auto rounded shadow" width="640" height="480">
+            </div>
+        {% endif %}
+
+        {% if result %}
+            <div class="mt-6 p-4 bg-green-100 border-l-4 border-green-500 text-green-700 font-semibold rounded">
+                {{ result }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

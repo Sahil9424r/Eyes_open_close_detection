@@ -23,7 +23,7 @@ This project detects whether a person’s eyes are **Open** or **Closed** in rea
 
 ## 🧠 Model Details
 
-- Developed using **Keras** with the **TensorFlow** backend.
+- Developed using **DEEP LEARNING** with the **CNN** (Convulutional Neural Network).
 - The model is a **deep Convolutional Neural Network (CNN)** constructed using the `Sequential` API.
 - **Input shape**: `256x256x3` RGB images.
 - **Classification Type**: Binary classification – predicts whether the eyes are `Open` or `Closed`.

@@ -5,9 +5,16 @@ from tensorflow.keras.models import load_model
 from PIL import Image
 import time
 import threading
+import os
 from playsound import playsound
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
+
+# Upload folder for images
+UPLOAD_FOLDER = 'static/uploads'
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Load model and labels
 model = load_model("Eyes.keras")
@@ -96,6 +103,7 @@ def index():
     result = None
     prediction = None
     show_camera = False
+    uploaded_image_url = None
 
     if request.method == 'POST':
         use_camera = request.form.get('use_camera') == 'on'
@@ -105,7 +113,14 @@ def index():
         elif 'image' in request.files:
             image_file = request.files['image']
             if image_file:
-                img = Image.open(image_file).convert("RGB")
+                # Save image
+                filename = secure_filename(image_file.filename)
+                image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+                image_file.save(image_path)
+                uploaded_image_url = image_path
+
+                # Predict
+                img = Image.open(image_path).convert("RGB")
                 img = img.resize((256, 256))
                 img_array = np.array(img).astype("float32") / 255.0
                 img_array = np.expand_dims(img_array, axis=0)
@@ -115,7 +130,8 @@ def index():
                 result = f"Prediction from uploaded image: {label} ({float(pred):.2f})"
                 prediction = label
 
-    return render_template('index.html', result=result, prediction=prediction, show_camera=show_camera)
+    return render_template('index.html', result=result, prediction=prediction,
+                           show_camera=show_camera, uploaded_image_url=uploaded_image_url)
 
 if __name__ == '__main__':
     app.run(debug=True)

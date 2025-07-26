@@ -40,6 +40,14 @@
                 {{ result }}
             </div>
         {% endif %}
+
+        {% if uploaded_image_url %}
+            <div class="mt-6 text-center">
+                <h3 class="text-lg font-semibold mb-2 text-white">Uploaded Image:</h3>
+                <img src="{{ uploaded_image_url }}" alt="Uploaded Image"
+                     class="mx-auto rounded-lg border border-gray-300 shadow-md max-w-full h-auto">
+            </div>
+        {% endif %}
     </div>
 </body>
 </html>

@@ -60,25 +60,6 @@ After training, sample predictions from the training set showed correct classifi
 
 ---
 
-## 📁 Project Structure
-
-- **`app.py`** – Flask web application script  
-- **`Eyes.keras`** – Trained CNN model  
-- **`haarcascade_frontalface_default.xml`** – Face detection model  
-- **`static/`, `templates/`** – Assets for HTML/CSS  
-- **`requirements.txt`** – Python dependencies  
-
----
-
-## ⚙️ Setup & Execution
-
-- Clone the repo.
-- Install dependencies in a virtual environment.
-- Run the Flask server.
-- Open your browser to view the real-time prediction system.
-
----
-
 ## 📦 Requirements
 
 - Flask  
@@ -89,6 +70,15 @@ After training, sample predictions from the training set showed correct classifi
 - Playsound
 
 ---
+## ⚙️ Setup & Execution
+
+- Clone the repo.
+- Install dependencies in a virtual environment.
+- Run the Flask server.
+- Open your browser to view the real-time prediction system.
+
+---
+
 
 ## 🔮 Future Improvements
 

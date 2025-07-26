@@ -78,8 +78,27 @@ After training, sample predictions from the training set showed correct classifi
 - Open your browser to view the real-time prediction system.
 
 ---
+---
 
+## 📸 Demo
 
+### 🔹 1. Home Page
+
+![Home Page](Eye_pic/Screenshot%20(385).png)
+
+---
+
+### 🔹 2. Image Uploaded with Prediction
+
+![Image Upload and Result](Eye_pic/Screenshot%20(388).png)
+
+---
+
+### 🔹 3. Real-Time Webcam Prediction
+
+![Real-Time Webcam Prediction](Eye_pic/Screenshot%20(387).png)
+
+---
 ## 🔮 Future Improvements
 
 - Add eye aspect ratio (EAR) and blink detection.

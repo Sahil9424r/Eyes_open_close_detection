@@ -23,11 +23,38 @@ This project detects whether a person’s eyes are **Open** or **Closed** in rea
 
 ## 🧠 Model Details
 
-- Built using Keras with TensorFlow backend.
-- Input shape: 256x256x3 RGB images.
-- Binary classifier: `Open`, `Closed`
-- Data preprocessing includes normalization and extensive image augmentation (flipping, rotation, zoom).
-- Final trained model saved as `Eyes.keras`.
+- Developed using **Keras** with the **TensorFlow** backend.
+- The model is a **deep Convolutional Neural Network (CNN)** constructed using the `Sequential` API.
+- **Input shape**: `256x256x3` RGB images.
+- **Classification Type**: Binary classification – predicts whether the eyes are `Open` or `Closed`.
+
+### 🔧 Architecture Overview
+
+- **Preprocessing**:
+  - `Rescaling` layer to normalize pixel values to the range [0, 1].
+  - `Data Augmentation` layer includes:
+    - Random horizontal and vertical flipping
+    - Random rotation (20%)
+    - Random zoom (20%)
+
+- **Convolutional Layers**:
+  - `Conv2D(16, (3,3), activation='relu')`
+  - `Conv2D(32, 3, activation='relu')`
+  - `MaxPooling2D()`
+  - `Conv2D(64, 3, activation='relu')`
+  - `MaxPooling2D()`
+  - `Conv2D(128, 3, activation='relu')`
+  - `MaxPooling2D()`
+  - `Conv2D(256, 3, activation='relu')`
+  - `MaxPooling2D()`
+
+- **Fully Connected Layers**:
+  - `Flatten()`
+  - `Dense(128, activation='relu')`
+  - `Dense(64, activation='relu')`
+  - `Dense(1, activation='sigmoid')` – gives probability of eye being open.
+
+- 🧾 Final trained model is saved as: **`Eyes.keras`**
 
 ---
 
